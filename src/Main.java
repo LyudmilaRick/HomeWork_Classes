@@ -13,6 +13,7 @@ public class Main {
         System.out.println(firstBook.getBookName() + " " + nameAuthor1.getFirstName() + " " + nameAuthor1.getLastName() + " " + firstBook.getBookPublication());
         System.out.println(secondBook.getBookName() + " " + nameAuthor2.getFirstName() + " " + nameAuthor2.getLastName() + " " + secondBook.getBookPublication());
         // второй уровень сложности
+        System.out.print("\n");
         System.out.println("Второй уровень сложности");
         // Необходимо в классе с методом main создать массив объектов типа Book и положить туда созданные книги.
         Book[] bookArray = new Book[5];
@@ -22,6 +23,20 @@ public class Main {
         addBook(bookArray, "Рефакторинг", "Мартин", "Фаулер", 2019);
         // Распечатать книгу
         printBook(bookArray);
+        Library libraryMe = new Library(25);
+        // Сложный уровень
+        System.out.print("\n");
+        System.out.println("Сложный уровень");
+        // Добавить книги в библиотеку
+        libraryMe.addBook("Рефакторинг", "Мартин", "Фаулер", 2019);
+        libraryMe.addBook("Мир и война", "Борис",  "Акунин",  2020);
+        libraryMe.addBook("Семь дней до Мегиддо", "Сергей", "Лукьяненко", 2021);
+        // Напечатать информацию о книге по ее названию
+        libraryMe.printBookDetail("Рефакторинг");
+        // Изменить год публикации книги по ее названию
+        libraryMe.changeBookYear("Рефакторинг", 2021);
+         // Напечатать чтобы проверить
+        libraryMe.printBookDetail("Рефакторинг");
     }
 
     private static void addBook(Book[] array, String bookName, String authorName1, String authorName2, int year) {
