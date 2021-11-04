@@ -7,11 +7,11 @@ public class Main {
         Author nameAuthor2 = new Author("Брюс", "Шнайдер");
         Book firstBook = new Book("Совершенный код", nameAuthor1, 2019);
         Book secondBook = new Book("Прикладная криптография", nameAuthor2, 2002);
-        secondBook.setBookPublication(2003);
+        secondBook.setPublicationYear(2003);
         // первый уровень сложности
         System.out.println("Первый уровень сложности");
-        System.out.println(firstBook.getBookName() + " " + nameAuthor1.getFirstName() + " " + nameAuthor1.getLastName() + " " + firstBook.getBookPublication());
-        System.out.println(secondBook.getBookName() + " " + nameAuthor2.getFirstName() + " " + nameAuthor2.getLastName() + " " + secondBook.getBookPublication());
+        System.out.println(firstBook.getBookName()  + " " + firstBook.getAuthor().getAuthorName()  + " " + firstBook.getPublicationYear());
+        System.out.println(secondBook.getBookName() + " " + secondBook.getAuthor().getAuthorName() + " " + secondBook.getPublicationYear());
         // второй уровень сложности
         System.out.print("\n");
         System.out.println("Второй уровень сложности");
@@ -23,14 +23,17 @@ public class Main {
         addBook(bookArray, "Рефакторинг", "Мартин", "Фаулер", 2019);
         // Распечатать книгу
         printBook(bookArray);
-        Library libraryMe = new Library(25);
         // Сложный уровень
         System.out.print("\n");
         System.out.println("Сложный уровень");
+        Library libraryMe = new Library(25);
         // Добавить книги в библиотеку
-        libraryMe.addBook("Рефакторинг", "Мартин", "Фаулер", 2019);
-        libraryMe.addBook("Мир и война", "Борис",  "Акунин",  2020);
-        libraryMe.addBook("Семь дней до Мегиддо", "Сергей", "Лукьяненко", 2021);
+        libraryMe.addNewBook(firstBook);
+        libraryMe.addNewBook(secondBook);
+        // еще один экземпляр
+        Author nameAuthor3 = new Author("Мартин", "Фаулер");
+        Book   newBook = new Book("Рефакторинг", nameAuthor3, 2019);
+        libraryMe.addNewBook(newBook);
         // Напечатать информацию о книге по ее названию
         libraryMe.printBookDetail("Рефакторинг");
         // Изменить год публикации книги по ее названию
@@ -69,8 +72,8 @@ public class Main {
                 break;
             }
             System.out.print(array[i].getBookName() + ": ");
-            System.out.print(array[i].getAuthor() + ": ");
-            System.out.print(array[i].getBookPublication());
+            System.out.print(array[i].getAuthor().getAuthorName() + ": ");
+            System.out.print(array[i].getPublicationYear());
             System.out.print("\n");
         }
     }
